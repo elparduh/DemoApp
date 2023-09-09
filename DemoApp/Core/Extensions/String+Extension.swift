@@ -145,6 +145,13 @@ extension String {
     func isNotEmpty() -> Bool {
         !trim().isEmpty
     }
+    
+    func localized(with table: String) -> String {
+        let localized = NSLocalizedString(self,
+                                          tableName: table,
+                                          comment: "")
+        return localized
+    }
 }
 
 extension NSAttributedString {

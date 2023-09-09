@@ -43,6 +43,12 @@
 		2094BBF12AACE01D00EA51C3 /* CheckoutPaymentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BBF02AACE01D00EA51C3 /* CheckoutPaymentPresenter.swift */; };
 		2094BBF42AACE05F00EA51C3 /* CheckoutPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BBF32AACE05F00EA51C3 /* CheckoutPaymentViewController.swift */; };
 		2094BBF82AACE0AC00EA51C3 /* CheckoutPaymentViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BBF72AACE0AC00EA51C3 /* CheckoutPaymentViewController+Layout.swift */; };
+		2094BBFC2AACE3C300EA51C3 /* UserPaymentMethods.json in Resources */ = {isa = PBXBuildFile; fileRef = 2094BBFB2AACE3C300EA51C3 /* UserPaymentMethods.json */; };
+		2094BBFF2AACE55500EA51C3 /* FakeDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BBFE2AACE55500EA51C3 /* FakeDataProtocol.swift */; };
+		2094BC032AACE77B00EA51C3 /* UserPaymentMethodsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BC022AACE77B00EA51C3 /* UserPaymentMethodsResponse.swift */; };
+		2094BC092AACEE3F00EA51C3 /* ProvidesFakeDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BC082AACEE3F00EA51C3 /* ProvidesFakeDataProtocol.swift */; };
+		2094BC0B2AACEED800EA51C3 /* UserPaymentMethodsProviderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BC0A2AACEED800EA51C3 /* UserPaymentMethodsProviderData.swift */; };
+		2094BC0D2AACEFFB00EA51C3 /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BC0C2AACEFFB00EA51C3 /* FakeData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +89,12 @@
 		2094BBF02AACE01D00EA51C3 /* CheckoutPaymentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutPaymentPresenter.swift; sourceTree = "<group>"; };
 		2094BBF32AACE05F00EA51C3 /* CheckoutPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutPaymentViewController.swift; sourceTree = "<group>"; };
 		2094BBF72AACE0AC00EA51C3 /* CheckoutPaymentViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckoutPaymentViewController+Layout.swift"; sourceTree = "<group>"; };
+		2094BBFB2AACE3C300EA51C3 /* UserPaymentMethods.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserPaymentMethods.json; sourceTree = "<group>"; };
+		2094BBFE2AACE55500EA51C3 /* FakeDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataProtocol.swift; sourceTree = "<group>"; };
+		2094BC022AACE77B00EA51C3 /* UserPaymentMethodsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPaymentMethodsResponse.swift; sourceTree = "<group>"; };
+		2094BC082AACEE3F00EA51C3 /* ProvidesFakeDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidesFakeDataProtocol.swift; sourceTree = "<group>"; };
+		2094BC0A2AACEED800EA51C3 /* UserPaymentMethodsProviderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPaymentMethodsProviderData.swift; sourceTree = "<group>"; };
+		2094BC0C2AACEFFB00EA51C3 /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				2094BBE52AACDDC100EA51C3 /* Presenter.swift */,
+				2094BC0C2AACEFFB00EA51C3 /* FakeData.swift */,
 			);
 			path = Arch;
 			sourceTree = "<group>";
@@ -173,6 +186,8 @@
 			children = (
 				2094BBE12AACDCD700EA51C3 /* CustomViewBuildable.swift */,
 				2094BBE32AACDD5000EA51C3 /* ViewBuildable.swift */,
+				2094BBFE2AACE55500EA51C3 /* FakeDataProtocol.swift */,
+				2094BC082AACEE3F00EA51C3 /* ProvidesFakeDataProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -219,6 +234,8 @@
 		2094BBE72AACDEDB00EA51C3 /* Payments */ = {
 			isa = PBXGroup;
 			children = (
+				2094BC002AACE71000EA51C3 /* Data */,
+				2094BBF92AACE2B000EA51C3 /* Resources */,
 				2094BBE82AACDF0A00EA51C3 /* UI */,
 			);
 			path = Payments;
@@ -266,6 +283,39 @@
 				2094BBF72AACE0AC00EA51C3 /* CheckoutPaymentViewController+Layout.swift */,
 			);
 			path = Layout;
+			sourceTree = "<group>";
+		};
+		2094BBF92AACE2B000EA51C3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2094BBFA2AACE2D000EA51C3 /* JSON */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2094BBFA2AACE2D000EA51C3 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				2094BBFB2AACE3C300EA51C3 /* UserPaymentMethods.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		2094BC002AACE71000EA51C3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2094BC012AACE71600EA51C3 /* Models */,
+				2094BC0A2AACEED800EA51C3 /* UserPaymentMethodsProviderData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		2094BC012AACE71600EA51C3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2094BC022AACE77B00EA51C3 /* UserPaymentMethodsResponse.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +382,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2094BBFC2AACE3C300EA51C3 /* UserPaymentMethods.json in Resources */,
 				2094BBA52AACA0B000EA51C3 /* LaunchScreen.storyboard in Resources */,
 				2094BBA22AACA0B000EA51C3 /* Assets.xcassets in Resources */,
 				2094BBA02AACA0AF00EA51C3 /* Main.storyboard in Resources */,
@@ -355,6 +406,8 @@
 				2094BB9D2AACA0AF00EA51C3 /* ViewController.swift in Sources */,
 				2094BBE42AACDD5000EA51C3 /* ViewBuildable.swift in Sources */,
 				2094BBF12AACE01D00EA51C3 /* CheckoutPaymentPresenter.swift in Sources */,
+				2094BC032AACE77B00EA51C3 /* UserPaymentMethodsResponse.swift in Sources */,
+				2094BC0D2AACEFFB00EA51C3 /* FakeData.swift in Sources */,
 				2094BBDE2AACDC7B00EA51C3 /* UICollectionViewWithDynamicHeight.swift in Sources */,
 				2094BBEE2AACDF9300EA51C3 /* PaymentGatewayViewCell.swift in Sources */,
 				2094BBE62AACDDC100EA51C3 /* Presenter.swift in Sources */,
@@ -362,15 +415,18 @@
 				2094BBF42AACE05F00EA51C3 /* CheckoutPaymentViewController.swift in Sources */,
 				2094BBB22AACA72600EA51C3 /* SwiftUIPreviewViewController.swift in Sources */,
 				2094BBD42AACDAFF00EA51C3 /* UILabel+Extension.swift in Sources */,
+				2094BC0B2AACEED800EA51C3 /* UserPaymentMethodsProviderData.swift in Sources */,
 				2094BBBD2AACD89900EA51C3 /* ViewCell+Extension.swift in Sources */,
 				2094BBB42AACA7C500EA51C3 /* SwiftUIPreviewView.swift in Sources */,
 				2094BBD02AACDAAE00EA51C3 /* URL+Extension.swift in Sources */,
+				2094BBFF2AACE55500EA51C3 /* FakeDataProtocol.swift in Sources */,
 				2094BBC82AACD9FB00EA51C3 /* FontSize.swift in Sources */,
 				2094BBF82AACE0AC00EA51C3 /* CheckoutPaymentViewController+Layout.swift in Sources */,
 				2094BBD82AACDB7F00EA51C3 /* UIStackView+Extension.swift in Sources */,
 				2094BBE02AACDC9C00EA51C3 /* HeaderCollectionReusableView.swift in Sources */,
 				2094BBD62AACDB3200EA51C3 /* Int+Constants.swift in Sources */,
 				2094BB992AACA0AF00EA51C3 /* AppDelegate.swift in Sources */,
+				2094BC092AACEE3F00EA51C3 /* ProvidesFakeDataProtocol.swift in Sources */,
 				2094BBC32AACD97B00EA51C3 /* UIView+Extension.swift in Sources */,
 				2094BB9B2AACA0AF00EA51C3 /* SceneDelegate.swift in Sources */,
 				2094BBCE2AACDA8600EA51C3 /* String+Extension.swift in Sources */,
