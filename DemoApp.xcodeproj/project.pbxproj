@@ -38,6 +38,11 @@
 		2094BBE22AACDCD700EA51C3 /* CustomViewBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BBE12AACDCD700EA51C3 /* CustomViewBuildable.swift */; };
 		2094BBE42AACDD5000EA51C3 /* ViewBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BBE32AACDD5000EA51C3 /* ViewBuildable.swift */; };
 		2094BBE62AACDDC100EA51C3 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BBE52AACDDC100EA51C3 /* Presenter.swift */; };
+		2094BBEB2AACDF5B00EA51C3 /* PaymentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BBEA2AACDF5B00EA51C3 /* PaymentViewCell.swift */; };
+		2094BBEE2AACDF9300EA51C3 /* PaymentGatewayViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BBED2AACDF9300EA51C3 /* PaymentGatewayViewCell.swift */; };
+		2094BBF12AACE01D00EA51C3 /* CheckoutPaymentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BBF02AACE01D00EA51C3 /* CheckoutPaymentPresenter.swift */; };
+		2094BBF42AACE05F00EA51C3 /* CheckoutPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BBF32AACE05F00EA51C3 /* CheckoutPaymentViewController.swift */; };
+		2094BBF82AACE0AC00EA51C3 /* CheckoutPaymentViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BBF72AACE0AC00EA51C3 /* CheckoutPaymentViewController+Layout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +78,11 @@
 		2094BBE12AACDCD700EA51C3 /* CustomViewBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewBuildable.swift; sourceTree = "<group>"; };
 		2094BBE32AACDD5000EA51C3 /* ViewBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuildable.swift; sourceTree = "<group>"; };
 		2094BBE52AACDDC100EA51C3 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		2094BBEA2AACDF5B00EA51C3 /* PaymentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewCell.swift; sourceTree = "<group>"; };
+		2094BBED2AACDF9300EA51C3 /* PaymentGatewayViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentGatewayViewCell.swift; sourceTree = "<group>"; };
+		2094BBF02AACE01D00EA51C3 /* CheckoutPaymentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutPaymentPresenter.swift; sourceTree = "<group>"; };
+		2094BBF32AACE05F00EA51C3 /* CheckoutPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutPaymentViewController.swift; sourceTree = "<group>"; };
+		2094BBF72AACE0AC00EA51C3 /* CheckoutPaymentViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckoutPaymentViewController+Layout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +132,7 @@
 		2094BBAC2AACA19900EA51C3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2094BBE72AACDEDB00EA51C3 /* Payments */,
 				2094BB9C2AACA0AF00EA51C3 /* ViewController.swift */,
 			);
 			path = Modules;
@@ -205,6 +216,58 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		2094BBE72AACDEDB00EA51C3 /* Payments */ = {
+			isa = PBXGroup;
+			children = (
+				2094BBE82AACDF0A00EA51C3 /* UI */,
+			);
+			path = Payments;
+			sourceTree = "<group>";
+		};
+		2094BBE82AACDF0A00EA51C3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2094BBF52AACE08F00EA51C3 /* Layout */,
+				2094BBF22AACE04B00EA51C3 /* Controller */,
+				2094BBEF2AACDFF200EA51C3 /* Presenter */,
+				2094BBE92AACDF4700EA51C3 /* Cells */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		2094BBE92AACDF4700EA51C3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2094BBEA2AACDF5B00EA51C3 /* PaymentViewCell.swift */,
+				2094BBED2AACDF9300EA51C3 /* PaymentGatewayViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2094BBEF2AACDFF200EA51C3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				2094BBF02AACE01D00EA51C3 /* CheckoutPaymentPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		2094BBF22AACE04B00EA51C3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2094BBF32AACE05F00EA51C3 /* CheckoutPaymentViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2094BBF52AACE08F00EA51C3 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				2094BBF72AACE0AC00EA51C3 /* CheckoutPaymentViewController+Layout.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -283,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2094BBBF2AACD8C200EA51C3 /* UICollectionView+Extension.swift in Sources */,
+				2094BBEB2AACDF5B00EA51C3 /* PaymentViewCell.swift in Sources */,
 				2094BBDC2AACDC2A00EA51C3 /* Constants.swift in Sources */,
 				2094BBCC2AACDA5D00EA51C3 /* NSLayoutConstraint+Extension.swift in Sources */,
 				2094BBC12AACD8E900EA51C3 /* CGFloat+Spacing.swift in Sources */,
@@ -290,15 +354,19 @@
 				2094BBD22AACDAD300EA51C3 /* UIColor+Extension.swift in Sources */,
 				2094BB9D2AACA0AF00EA51C3 /* ViewController.swift in Sources */,
 				2094BBE42AACDD5000EA51C3 /* ViewBuildable.swift in Sources */,
+				2094BBF12AACE01D00EA51C3 /* CheckoutPaymentPresenter.swift in Sources */,
 				2094BBDE2AACDC7B00EA51C3 /* UICollectionViewWithDynamicHeight.swift in Sources */,
+				2094BBEE2AACDF9300EA51C3 /* PaymentGatewayViewCell.swift in Sources */,
 				2094BBE62AACDDC100EA51C3 /* Presenter.swift in Sources */,
 				2094BBB62AACA84100EA51C3 /* DemoPreviews.swift in Sources */,
+				2094BBF42AACE05F00EA51C3 /* CheckoutPaymentViewController.swift in Sources */,
 				2094BBB22AACA72600EA51C3 /* SwiftUIPreviewViewController.swift in Sources */,
 				2094BBD42AACDAFF00EA51C3 /* UILabel+Extension.swift in Sources */,
 				2094BBBD2AACD89900EA51C3 /* ViewCell+Extension.swift in Sources */,
 				2094BBB42AACA7C500EA51C3 /* SwiftUIPreviewView.swift in Sources */,
 				2094BBD02AACDAAE00EA51C3 /* URL+Extension.swift in Sources */,
 				2094BBC82AACD9FB00EA51C3 /* FontSize.swift in Sources */,
+				2094BBF82AACE0AC00EA51C3 /* CheckoutPaymentViewController+Layout.swift in Sources */,
 				2094BBD82AACDB7F00EA51C3 /* UIStackView+Extension.swift in Sources */,
 				2094BBE02AACDC9C00EA51C3 /* HeaderCollectionReusableView.swift in Sources */,
 				2094BBD62AACDB3200EA51C3 /* Int+Constants.swift in Sources */,
