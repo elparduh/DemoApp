@@ -24,9 +24,6 @@ class CheckoutPaymentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let data =  presenter.getUserPaymentMethods()
-        print(data?.activeGateways)
-        print(data?.edges)
     }
 }
 

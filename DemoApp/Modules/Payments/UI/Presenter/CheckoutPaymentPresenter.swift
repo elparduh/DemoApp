@@ -14,11 +14,6 @@ class CheckoutPaymentPresenter: Presenter {
     func paymentMethodSelected() {
         ui?.enableNextButton()
     }
-    
-    func getUserPaymentMethods() -> UserPaymentMethods? {
-        fakeDataResponse.data?.userPaymentMethods
-    }
-    
 }
 
 protocol CheckoutPaymentUI: UI {
