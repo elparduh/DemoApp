@@ -12,7 +12,9 @@ class CheckoutPaymentViewController: UIViewController {
                                                                  collectionViewLayout: UICollectionViewFlowLayout())
     let buttonContainerView = UIView()
     let nextButton = UIButton()
-    lazy var presenter: CheckoutPaymentPresenter = CheckoutPaymentPresenter(ui: self)
+    let fakeDataProvider: ProvidesFakeDataProtocol = UserPaymentMethodsProviderData()
+    lazy var presenter: CheckoutPaymentPresenter = CheckoutPaymentPresenter(ui: self,
+                                                                            fakeDataResponse: fakeDataProvider.providesUserPaymentMethods())
     
     override func loadView() {
         view = UIView()
@@ -22,6 +24,9 @@ class CheckoutPaymentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let data =  presenter.getUserPaymentMethods()
+        print(data?.activeGateways)
+        print(data?.edges)
     }
 }
 
