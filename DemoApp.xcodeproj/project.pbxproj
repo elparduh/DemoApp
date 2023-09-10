@@ -49,6 +49,7 @@
 		2094BC092AACEE3F00EA51C3 /* ProvidesFakeDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BC082AACEE3F00EA51C3 /* ProvidesFakeDataProtocol.swift */; };
 		2094BC0B2AACEED800EA51C3 /* UserPaymentMethodsProviderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BC0A2AACEED800EA51C3 /* UserPaymentMethodsProviderData.swift */; };
 		2094BC0D2AACEFFB00EA51C3 /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BC0C2AACEFFB00EA51C3 /* FakeData.swift */; };
+		2094BC102AAD53D400EA51C3 /* PaymentMethodsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BC0F2AAD53D400EA51C3 /* PaymentMethodsUI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,7 @@
 		2094BC082AACEE3F00EA51C3 /* ProvidesFakeDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidesFakeDataProtocol.swift; sourceTree = "<group>"; };
 		2094BC0A2AACEED800EA51C3 /* UserPaymentMethodsProviderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPaymentMethodsProviderData.swift; sourceTree = "<group>"; };
 		2094BC0C2AACEFFB00EA51C3 /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
+		2094BC0F2AAD53D400EA51C3 /* PaymentMethodsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodsUI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				2094BBE72AACDEDB00EA51C3 /* Payments */,
-				2094BB9C2AACA0AF00EA51C3 /* ViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -197,6 +198,7 @@
 			children = (
 				2094BBDD2AACDC7B00EA51C3 /* UICollectionViewWithDynamicHeight.swift */,
 				2094BBDF2AACDC9C00EA51C3 /* HeaderCollectionReusableView.swift */,
+				2094BB9C2AACA0AF00EA51C3 /* ViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -244,6 +246,7 @@
 		2094BBE82AACDF0A00EA51C3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2094BC0E2AAD537400EA51C3 /* UIModel */,
 				2094BBF52AACE08F00EA51C3 /* Layout */,
 				2094BBF22AACE04B00EA51C3 /* Controller */,
 				2094BBEF2AACDFF200EA51C3 /* Presenter */,
@@ -316,6 +319,14 @@
 				2094BC022AACE77B00EA51C3 /* UserPaymentMethodsResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		2094BC0E2AAD537400EA51C3 /* UIModel */ = {
+			isa = PBXGroup;
+			children = (
+				2094BC0F2AAD53D400EA51C3 /* PaymentMethodsUI.swift */,
+			);
+			path = UIModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,6 +426,7 @@
 				2094BBF42AACE05F00EA51C3 /* CheckoutPaymentViewController.swift in Sources */,
 				2094BBB22AACA72600EA51C3 /* SwiftUIPreviewViewController.swift in Sources */,
 				2094BBD42AACDAFF00EA51C3 /* UILabel+Extension.swift in Sources */,
+				2094BC102AAD53D400EA51C3 /* PaymentMethodsUI.swift in Sources */,
 				2094BC0B2AACEED800EA51C3 /* UserPaymentMethodsProviderData.swift in Sources */,
 				2094BBBD2AACD89900EA51C3 /* ViewCell+Extension.swift in Sources */,
 				2094BBB42AACA7C500EA51C3 /* SwiftUIPreviewView.swift in Sources */,
