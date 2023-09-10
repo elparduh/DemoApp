@@ -17,11 +17,25 @@ extension Array where Element == ActiveGateways {
     func asOnlinePaymentMethodsUi() -> PaymentMethodsUi {
         let paymentMethodUi: [PaymentMethodUi] = self.compactMap { activeGateways in
             PaymentMethodUi(gatewayPaymentMethod: GatewayPaymentMethodUi(title: activeGateways.description ?? .empty,
-                                                                         images: [],
+                                                                         images: activeGateways.asImages(),
                                                                          fullWidth: activeGateways.fullWidth ?? false,
                                                                          sortOrder: activeGateways.sortOrder ?? .zero,
-                                                                         gatewayTypeUi: .unknown))
+                                                                         gatewayTypeUi:activeGateways.gatewayTypeUi()))
         }
         return PaymentMethodsUi(title: .localizedString(key: "Pay online"),type: .gateway, paymentMethods: paymentMethodUi)
+    }
+}
+
+extension ActiveGateways {
+    
+    func asImages() -> [String] {
+        providers?.compactMap{ providers in
+            providers.iconUrl
+        } ?? []
+    }
+    
+    func gatewayTypeUi() -> GatewayTypeUi {
+        let value: String = gateway ?? .empty
+        return GatewayTypeUi(rawValue: value) ?? .defaultValue
     }
 }
