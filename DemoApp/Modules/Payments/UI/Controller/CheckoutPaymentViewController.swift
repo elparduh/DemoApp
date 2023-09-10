@@ -12,9 +12,8 @@ class CheckoutPaymentViewController: UIViewController {
                                                                  collectionViewLayout: UICollectionViewFlowLayout())
     let buttonContainerView = UIView()
     let nextButton = UIButton()
-    let fakeDataProvider: ProvidesFakeDataProtocol = UserPaymentMethodsProviderData()
-    lazy var presenter: CheckoutPaymentPresenter = CheckoutPaymentPresenter(ui: self,
-                                                                            fakeDataResponse: fakeDataProvider.providesUserPaymentMethods())
+    
+    lazy var presenter: CheckoutPaymentPresenter = CheckoutPaymentPresenter(ui: self)
     
     override func loadView() {
         view = UIView()
