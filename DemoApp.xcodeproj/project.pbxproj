@@ -50,6 +50,7 @@
 		2094BC0B2AACEED800EA51C3 /* UserPaymentMethodsProviderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BC0A2AACEED800EA51C3 /* UserPaymentMethodsProviderData.swift */; };
 		2094BC0D2AACEFFB00EA51C3 /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BC0C2AACEFFB00EA51C3 /* FakeData.swift */; };
 		2094BC102AAD53D400EA51C3 /* PaymentMethodsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BC0F2AAD53D400EA51C3 /* PaymentMethodsUI.swift */; };
+		2094BC122AADFB4C00EA51C3 /* Mappers+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2094BC112AADFB4C00EA51C3 /* Mappers+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		2094BC0A2AACEED800EA51C3 /* UserPaymentMethodsProviderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPaymentMethodsProviderData.swift; sourceTree = "<group>"; };
 		2094BC0C2AACEFFB00EA51C3 /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
 		2094BC0F2AAD53D400EA51C3 /* PaymentMethodsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodsUI.swift; sourceTree = "<group>"; };
+		2094BC112AADFB4C00EA51C3 /* Mappers+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mappers+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				2094BC0F2AAD53D400EA51C3 /* PaymentMethodsUI.swift */,
+				2094BC112AADFB4C00EA51C3 /* Mappers+Extension.swift */,
 			);
 			path = UIModel;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				2094BC0D2AACEFFB00EA51C3 /* FakeData.swift in Sources */,
 				2094BBDE2AACDC7B00EA51C3 /* UICollectionViewWithDynamicHeight.swift in Sources */,
 				2094BBEE2AACDF9300EA51C3 /* PaymentGatewayViewCell.swift in Sources */,
+				2094BC122AADFB4C00EA51C3 /* Mappers+Extension.swift in Sources */,
 				2094BBE62AACDDC100EA51C3 /* Presenter.swift in Sources */,
 				2094BBB62AACA84100EA51C3 /* DemoPreviews.swift in Sources */,
 				2094BBF42AACE05F00EA51C3 /* CheckoutPaymentViewController.swift in Sources */,

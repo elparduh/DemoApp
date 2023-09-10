@@ -112,7 +112,7 @@ struct Node : Codable {
     let expirationMonth : String?
     let expirationYear : String?
     let lastDigits : String?
-    let isDefault : String?
+    let isDefault : Bool?
     let gateway : String?
     let requireCvv : Bool?
 
@@ -141,7 +141,7 @@ struct Node : Codable {
         expirationMonth = try values.decodeIfPresent(String.self, forKey: .expirationMonth)
         expirationYear = try values.decodeIfPresent(String.self, forKey: .expirationYear)
         lastDigits = try values.decodeIfPresent(String.self, forKey: .lastDigits)
-        isDefault = try values.decodeIfPresent(String.self, forKey: .isDefault)
+        isDefault = try values.decodeIfPresent(Bool.self, forKey: .isDefault)
         gateway = try values.decodeIfPresent(String.self, forKey: .gateway)
         requireCvv = try values.decodeIfPresent(Bool.self, forKey: .requireCvv)
     }

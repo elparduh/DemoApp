@@ -4,10 +4,19 @@ struct PaymentMethodsUi {
     let title: String
     let type: PaymentMethodTypeUi
     let paymentMethods: [PaymentMethodUi]
+    
+    init(title: String = .empty,
+         type: PaymentMethodTypeUi = .defaultValue,
+         paymentMethods: [PaymentMethodUi] = []) {
+        self.title = title
+        self.type = type
+        self.paymentMethods = paymentMethods
+    }
 }
 
 enum PaymentMethodTypeUi {
-    case saved, gateway
+    static let defaultValue: PaymentMethodTypeUi = .unknown
+    case saved, gateway, unknown
 }
 
 struct PaymentMethodUi {
