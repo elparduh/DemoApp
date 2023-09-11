@@ -134,7 +134,7 @@
                   "expirationMonth":"08",
                   "expirationYear":"2026",
                   "lastDigits":"8050",
-                  "isDefault":"true",
+                  "isDefault":true,
                   "gateway":"ADYEN",
                   "requireCvv":false
                }

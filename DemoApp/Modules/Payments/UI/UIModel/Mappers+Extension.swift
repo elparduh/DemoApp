@@ -1,5 +1,18 @@
 import Foundation
 
+extension UserPaymentMethods {
+    
+    func asPaymentMethodsUi() -> [PaymentMethodsUi] {
+        var paymentMethodsUi: [PaymentMethodsUi] = []
+        let savedPaymentMethodsUi: PaymentMethodsUi = edges?.asSavedPaymentMethodsUi() ?? PaymentMethodsUi()
+        let onlinePaymentMethodsUi: PaymentMethodsUi = activeGateways?.asOnlinePaymentMethodsUi() ?? PaymentMethodsUi()
+        let manualPaymentMethodsUi: PaymentMethodsUi = activeGateways?.asManualPaymentMethodsUi() ?? PaymentMethodsUi()
+        paymentMethodsUi.append(savedPaymentMethodsUi)
+        paymentMethodsUi.append(onlinePaymentMethodsUi)
+        paymentMethodsUi.append(manualPaymentMethodsUi)
+        return paymentMethodsUi
+    }
+}
 extension Array where Element == Edges {
     
     func asSavedPaymentMethodsUi() -> PaymentMethodsUi {
@@ -16,13 +29,26 @@ extension Array where Element == ActiveGateways {
     
     func asOnlinePaymentMethodsUi() -> PaymentMethodsUi {
         let paymentMethodUi: [PaymentMethodUi] = self.compactMap { activeGateways in
-            PaymentMethodUi(gatewayPaymentMethod: GatewayPaymentMethodUi(title: activeGateways.description ?? .empty,
+            guard !activeGateways.isManualGateway() else { return nil }
+            return PaymentMethodUi(gatewayPaymentMethod: GatewayPaymentMethodUi(title: activeGateways.description ?? .empty,
                                                                          images: activeGateways.asImages(),
                                                                          fullWidth: activeGateways.fullWidth ?? false,
                                                                          sortOrder: activeGateways.sortOrder ?? .zero,
                                                                          gatewayTypeUi:activeGateways.gatewayTypeUi()))
         }
         return PaymentMethodsUi(title: .localizedString(key: "Pay online"),type: .gateway, paymentMethods: paymentMethodUi)
+    }
+    
+    func asManualPaymentMethodsUi() -> PaymentMethodsUi {
+        let paymentMethodUi: [PaymentMethodUi] = self.compactMap { activeGateways in
+            guard activeGateways.isManualGateway() else { return nil }
+            return PaymentMethodUi(gatewayPaymentMethod: GatewayPaymentMethodUi(title: activeGateways.description ?? .empty,
+                                                                         images: activeGateways.asImages(),
+                                                                         fullWidth: activeGateways.fullWidth ?? false,
+                                                                         sortOrder: activeGateways.sortOrder ?? .zero,
+                                                                         gatewayTypeUi:activeGateways.gatewayTypeUi()))
+        }
+        return PaymentMethodsUi(title: .localizedString(key: "Pay on delivery"),type: .gateway, paymentMethods: paymentMethodUi)
     }
 }
 
@@ -37,5 +63,9 @@ extension ActiveGateways {
     func gatewayTypeUi() -> GatewayTypeUi {
         let value: String = gateway ?? .empty
         return GatewayTypeUi(rawValue: value) ?? .defaultValue
+    }
+    
+    func isManualGateway() -> Bool {
+        gatewayTypeUi() == .manual
     }
 }

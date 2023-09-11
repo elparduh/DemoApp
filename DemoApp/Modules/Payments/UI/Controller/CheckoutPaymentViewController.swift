@@ -23,6 +23,7 @@ class CheckoutPaymentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.getUserPaymentMethods()
     }
 }
 
@@ -116,6 +117,10 @@ extension CheckoutPaymentViewController: UICollectionViewDelegate, UICollectionV
 }
 
 extension CheckoutPaymentViewController: CheckoutPaymentUI {
+    
+    func displaypaymentMethods(_ paymentMethodsUi: [PaymentMethodsUi]) {
+        
+    }
     
     func enableNextButton() {
         nextButton.enabled()

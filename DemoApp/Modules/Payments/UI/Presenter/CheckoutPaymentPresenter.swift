@@ -8,19 +8,20 @@ class CheckoutPaymentPresenter: Presenter {
         self.ui = ui
     }
     
-    func paymentMethodSelected() {
-        ui?.enableNextButton()
-    }
-    
     func getUserPaymentMethods() {
         let fakeDataProvider: ProvidesFakeDataProtocol = UserPaymentMethodsProviderData()
         let fakeDataResponse: UserPaymentMethodsResponse = fakeDataProvider.providesUserPaymentMethods()
-        let _ : PaymentMethodsUi = fakeDataResponse.data?.userPaymentMethods?.edges?.asSavedPaymentMethodsUi() ?? PaymentMethodsUi()
-        let _ : [ActiveGateways]? = fakeDataResponse.data?.userPaymentMethods?.activeGateways
+        let paymentMethodsUi: [PaymentMethodsUi] = fakeDataResponse.data?.userPaymentMethods?.asPaymentMethodsUi() ?? []
+        ui?.displaypaymentMethods(paymentMethodsUi)
+    }
+    
+    func paymentMethodSelected() {
+        ui?.enableNextButton()
     }
 }
 
 protocol CheckoutPaymentUI: UI {
     func enableNextButton()
     func disableNextButton()
+    func displaypaymentMethods(_ paymentMethodsUi: [PaymentMethodsUi])
 }
