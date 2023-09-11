@@ -13,6 +13,7 @@ extension UserPaymentMethods {
         return paymentMethodsUi
     }
 }
+
 extension Array where Element == Edges {
     
     func asSavedPaymentMethodsUi() -> PaymentMethodsUi {
@@ -33,7 +34,6 @@ extension Array where Element == ActiveGateways {
             return PaymentMethodUi(gatewayPaymentMethod: GatewayPaymentMethodUi(title: activeGateways.description ?? .empty,
                                                                          images: activeGateways.asImages(),
                                                                          fullWidth: activeGateways.fullWidth ?? false,
-                                                                         sortOrder: activeGateways.sortOrder ?? .zero,
                                                                          gatewayTypeUi:activeGateways.gatewayTypeUi()))
         }
         return PaymentMethodsUi(title: .localizedString(key: "Pay online"),type: .gateway, paymentMethods: paymentMethodUi)
@@ -45,7 +45,6 @@ extension Array where Element == ActiveGateways {
             return PaymentMethodUi(gatewayPaymentMethod: GatewayPaymentMethodUi(title: activeGateways.description ?? .empty,
                                                                          images: activeGateways.asImages(),
                                                                          fullWidth: activeGateways.fullWidth ?? false,
-                                                                         sortOrder: activeGateways.sortOrder ?? .zero,
                                                                          gatewayTypeUi:activeGateways.gatewayTypeUi()))
         }
         return PaymentMethodsUi(title: .localizedString(key: "Pay on delivery"),type: .gateway, paymentMethods: paymentMethodUi)
@@ -67,5 +66,35 @@ extension ActiveGateways {
     
     func isManualGateway() -> Bool {
         gatewayTypeUi() == .manual
+    }
+}
+// UI
+extension Array where Element == PaymentMethodsUi {
+    
+    func getTitlePaymentMethodUi(_ section: Int) -> String {
+        self[section].title
+    }
+    
+    func sectionCount(_ section: Int) -> Int {
+        self[section].paymentMethods.count
+    }
+    
+    func getPaymentMethodUi(_ section: Int, row: Int) -> PaymentMethodUi {
+        self[section].paymentMethods[row]
+    }
+    
+    func isSavedPaymentMethods(_ section: Int) -> Bool {
+        self[section].type == .saved
+    }
+}
+
+extension PaymentMethodUi {
+    
+    func isManualPaymentMethod() -> Bool {
+        gatewayPaymentMethod.gatewayTypeUi == .manual
+    }
+    
+    func isFullWidth() -> Bool {
+        gatewayPaymentMethod.fullWidth
     }
 }

@@ -33,7 +33,7 @@ class PaymentViewCell: UICollectionViewCell, ReusableView  {
     }
     
     func bind(_ image: String, _ title: String) {
-        imageView.bindImage(string: image)
+        imageView.load(with: image)
         titleLabel.text = title
     }
     

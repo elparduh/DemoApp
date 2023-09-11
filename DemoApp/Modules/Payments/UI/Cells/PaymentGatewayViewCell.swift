@@ -123,7 +123,7 @@ extension PaymentGatewayViewCell: CustomViewBuildable {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
-        imageView.bindImage(string: url)
+        imageView.load(with: url)
         imageView.widthAnchor.constraint(equalToConstant: .point34).activate()
         imageView.heightAnchor.constraint(equalToConstant: .point24).activate()
         return imageView

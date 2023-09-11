@@ -55,6 +55,8 @@ enum GatewayTypeUi: String {
     case mercadoPago = "MERCADO_PAGO"
     case applePay = "APPLE_PAY"
     case manual = "MANUAL"
+    case addCard = "ADD_CARD"
+    case addVoucher = "ADD_VOUCHER"
     case unknown
 }
 
@@ -62,18 +64,15 @@ struct GatewayPaymentMethodUi {
     let title: String
     let images: [String]
     let fullWidth: Bool
-    let sortOrder: Int
     let gatewayTypeUi: GatewayTypeUi
     
     init(title: String = .empty,
          images: [String] = [],
          fullWidth: Bool = false,
-         sortOrder: Int = .zero,
          gatewayTypeUi: GatewayTypeUi = .defaultValue) {
         self.title = title
         self.images = images
         self.fullWidth = fullWidth
-        self.sortOrder = sortOrder
         self.gatewayTypeUi = gatewayTypeUi
     }
 }
