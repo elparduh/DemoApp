@@ -119,7 +119,8 @@ extension CheckoutPaymentViewController: UICollectionViewDelegate, UICollectionV
 extension CheckoutPaymentViewController: CheckoutPaymentUI {
     
     func displaypaymentMethods(_ paymentMethodsUi: [PaymentMethodsUi]) {
-        
+        let data = paymentMethodsUi
+        print(data)
     }
     
     func enableNextButton() {
