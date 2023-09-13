@@ -81,20 +81,21 @@ extension CheckoutPaymentViewController: UICollectionViewDelegateFlowLayout {
         if paymentMethodsUi.isSavedPaymentMethods(indexPath.section) {
             return CGSize(width: paymentMethodsCollectionView.frame.size.width - .point32, height: .point56)
         } else if !paymentMethodUi.isManualPaymentMethod() {
-            return calculatePayOnlineCellSize(indexPath)
+            return calculatePayOnlineCellSize(indexPath, collectionViewLayout)
         } else {
             return CGSize(width: paymentMethodsCollectionView.frame.size.width - .point32, height: .point56)
         }
     }
     
-    private func calculatePayOnlineCellSize(_ indexPath: IndexPath) -> CGSize {
+    private func calculatePayOnlineCellSize(_ indexPath: IndexPath,
+                                            _ collectionViewLayout: UICollectionViewLayout) -> CGSize {
         let paymentMethodUi = paymentMethodsUi.getPaymentMethodUi(indexPath.section, row: indexPath.row)
         
         if paymentMethodUi.isFullWidth() {
-            return CGSize(width: paymentMethodsCollectionView.frame.size.width - .point32, height: 84)
+            return CGSize(width: paymentMethodsCollectionView.frame.size.width - .point32, height: .point84)
         } else {
-            let collectionViewWidth = paymentMethodsCollectionView.frame.size.width - (.point16 * .point2 + .point10)
-            return CGSize(width: collectionViewWidth / 2, height: 84)
+            let collectionViewWidth = paymentMethodsCollectionView.frame.size.width - (.point42)
+            return CGSize(width: collectionViewWidth / CGFloat.point2, height: .point84)
         }
     }
     
