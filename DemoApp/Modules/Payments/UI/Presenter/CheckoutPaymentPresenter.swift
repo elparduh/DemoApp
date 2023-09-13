@@ -3,12 +3,16 @@ import Foundation
 class CheckoutPaymentPresenter: Presenter {
     internal typealias UI = CheckoutPaymentUI
     weak var ui: UI?
-    let fakeDataResponse: UserPaymentMethodsResponse
     
-    init(ui: CheckoutPaymentUI,
-         fakeDataResponse: UserPaymentMethodsResponse) {
+    init(ui: CheckoutPaymentUI) {
         self.ui = ui
-        self.fakeDataResponse = fakeDataResponse
+    }
+    
+    func getUserPaymentMethods() {
+        let fakeDataProvider: ProvidesFakeDataProtocol = UserPaymentMethodsProviderData()
+        let fakeDataResponse: UserPaymentMethodsResponse = fakeDataProvider.providesUserPaymentMethods()
+        let paymentMethodsUi: [PaymentMethodsUi] = fakeDataResponse.data?.userPaymentMethods?.asPaymentMethodsUi() ?? []
+        ui?.displaypaymentMethods(paymentMethodsUi)
     }
     
     func paymentMethodSelected() {
@@ -19,4 +23,5 @@ class CheckoutPaymentPresenter: Presenter {
 protocol CheckoutPaymentUI: UI {
     func enableNextButton()
     func disableNextButton()
+    func displaypaymentMethods(_ paymentMethodsUi: [PaymentMethodsUi])
 }

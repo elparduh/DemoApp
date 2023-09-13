@@ -79,7 +79,7 @@ extension PaymentGatewayViewCell: CustomViewBuildable {
         mainStackView.alignment = .center
         mainStackView.configureLayoutMargins(constant: .point16)
         mainStackView.backgroundColor = .white
-        shadowView.layer.cornerRadius = .point8
+        mainStackView.layer.cornerRadius = .point8
     }
     
     private func configureImageStackView() {
@@ -123,7 +123,7 @@ extension PaymentGatewayViewCell: CustomViewBuildable {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
-        imageView.bindImage(string: url)
+        imageView.load(with: url)
         imageView.widthAnchor.constraint(equalToConstant: .point34).activate()
         imageView.heightAnchor.constraint(equalToConstant: .point24).activate()
         return imageView

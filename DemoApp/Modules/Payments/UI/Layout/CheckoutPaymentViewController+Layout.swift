@@ -8,9 +8,7 @@ extension CheckoutPaymentViewController: ViewBuildable {
         view.addSubview(buttonContainerView)
         buttonContainerView.addSubview(nextButton)
         scrollView.addSubview(mainStackView)
-        mainStackView.addArrangedSubviews([savedCollectionView,
-                                           onlineCollectionView,
-                                           manualCollectionView])
+        mainStackView.addArrangedSubview(paymentMethodsCollectionView)
     }
     
     func addConstraints(toMainView view: UIView) {
@@ -18,9 +16,7 @@ extension CheckoutPaymentViewController: ViewBuildable {
         configureMainView()
         configureScrollView(layoutGuide)
         configureMainStackView()
-        configureSavedCollectionView()
-        configureOnlineCollectionView()
-        configureManualCollectionView()
+        configurePaymentMethodsCollectionView()
         configureButtonContainerView(layoutGuide)
         configureContinueButton()
     }
@@ -37,42 +33,20 @@ extension CheckoutPaymentViewController: ViewBuildable {
     private func configureMainStackView() {
         mainStackView.pinToEdges(superView: scrollView)
         mainStackView.axis = .vertical
-        mainStackView.spacing = .point16
         
         mainStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).activate()
     }
     
-    private func configureSavedCollectionView() {
-        savedCollectionView.showsVerticalScrollIndicator = false
-        savedCollectionView.isScrollEnabled = false
-        savedCollectionView.delegate = self
-        savedCollectionView.dataSource = self
-        savedCollectionView.configureLayoutMargins(top: .point8, left: .point16, bottom: .point16, right: .point16)
-        savedCollectionView.layout?.minimumLineSpacing = .point16
-        savedCollectionView.registerSupplementary(HeaderCollectionReusableView.self)
-        savedCollectionView.register(PaymentViewCell.self)
-    }
-    
-    private func configureOnlineCollectionView() {
-        onlineCollectionView.showsVerticalScrollIndicator = false
-        onlineCollectionView.isScrollEnabled = false
-        onlineCollectionView.delegate = self
-        onlineCollectionView.dataSource = self
-        onlineCollectionView.configureLayoutMargins(top: .point8, left: .point16, bottom: .point16, right: .point16)
-        onlineCollectionView.layout?.minimumLineSpacing = .point16
-        onlineCollectionView.registerSupplementary(HeaderCollectionReusableView.self)
-        onlineCollectionView.register(PaymentGatewayViewCell.self)
-    }
-    
-    private func configureManualCollectionView() {
-        manualCollectionView.showsVerticalScrollIndicator = false
-        manualCollectionView.isScrollEnabled = false
-        manualCollectionView.delegate = self
-        manualCollectionView.dataSource = self
-        manualCollectionView.configureLayoutMargins(top: .point8, left: .point16, bottom: .point16, right: .point16)
-        manualCollectionView.layout?.minimumLineSpacing = .point16
-        manualCollectionView.registerSupplementary(HeaderCollectionReusableView.self)
-        manualCollectionView.register(PaymentViewCell.self)
+    private func configurePaymentMethodsCollectionView() {
+        paymentMethodsCollectionView.showsVerticalScrollIndicator = false
+        paymentMethodsCollectionView.isScrollEnabled = false
+        paymentMethodsCollectionView.delegate = self
+        paymentMethodsCollectionView.dataSource = self
+        paymentMethodsCollectionView.configureLayoutMargins(top: .point8, left: .point16, bottom: .point16, right: .point16)
+        paymentMethodsCollectionView.layout?.minimumLineSpacing = .point16
+        paymentMethodsCollectionView.registerSupplementary(HeaderCollectionReusableView.self)
+        paymentMethodsCollectionView.register(PaymentViewCell.self)
+        paymentMethodsCollectionView.register(PaymentGatewayViewCell.self)
     }
     
     private func configureButtonContainerView(_ layoutGuide: UILayoutGuide) {
@@ -99,21 +73,31 @@ extension CheckoutPaymentViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == savedCollectionView {
-            return CGSize(width: savedCollectionView.frame.size.width - .point32, height: .point56)
-        } else if collectionView == onlineCollectionView {
+        let paymentMethodUi = paymentMethodsUi.getPaymentMethodUi(indexPath.section, row: indexPath.row)
+        
+        if paymentMethodsUi.isSavedPaymentMethods(indexPath.section) {
+            return CGSize(width: paymentMethodsCollectionView.frame.size.width - .point32, height: .point56)
+        } else if !paymentMethodUi.isManualPaymentMethod() {
             return calculatePayOnlineCellSize(indexPath)
         } else {
-            return CGSize(width: manualCollectionView.frame.size.width - .point32, height: .point56)
+            return CGSize(width: paymentMethodsCollectionView.frame.size.width - .point32, height: .point56)
         }
     }
     
     private func calculatePayOnlineCellSize(_ indexPath: IndexPath) -> CGSize {
-        if indexPath.row == 0 || indexPath.row == 1{
-            return CGSize(width: onlineCollectionView.frame.size.width - .point32, height: 84)
+        let paymentMethodUi = paymentMethodsUi.getPaymentMethodUi(indexPath.section, row: indexPath.row)
+        
+        if paymentMethodUi.isFullWidth() {
+            return CGSize(width: paymentMethodsCollectionView.frame.size.width - .point32, height: 84)
         } else {
-            let collectionViewWidth = onlineCollectionView.frame.size.width - (.point16 * .point2 + .point10)
+            let collectionViewWidth = paymentMethodsCollectionView.frame.size.width - (.point16 * .point2 + .point10)
             return CGSize(width: collectionViewWidth / 2, height: 84)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        CGSize(width: collectionView.frame.width, height: .point20)
     }
 }
