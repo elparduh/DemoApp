@@ -38,15 +38,18 @@ extension CheckoutPaymentViewController: ViewBuildable {
     }
     
     private func configurePaymentMethodsCollectionView() {
+        paymentMethodsCollectionView.collectionViewLayout = CheckoutPaymentFlowLayout(spacing: .point8)
         paymentMethodsCollectionView.showsVerticalScrollIndicator = false
         paymentMethodsCollectionView.isScrollEnabled = false
         paymentMethodsCollectionView.delegate = self
         paymentMethodsCollectionView.dataSource = self
-        paymentMethodsCollectionView.configureLayoutMargins(top: .point8, left: .point16, bottom: .point16, right: .point16)
-        paymentMethodsCollectionView.layout?.minimumLineSpacing = .point16
         paymentMethodsCollectionView.registerSupplementary(HeaderCollectionReusableView.self)
         paymentMethodsCollectionView.register(PaymentViewCell.self)
         paymentMethodsCollectionView.register(PaymentGatewayViewCell.self)
+        paymentMethodsCollectionView.contentInset = UIEdgeInsets(top: .zero,
+                                                                 left: .zero,
+                                                                 bottom: .point76,
+                                                                 right: .zero)
     }
     
     private func configureButtonContainerView(_ layoutGuide: UILayoutGuide) {
@@ -78,20 +81,21 @@ extension CheckoutPaymentViewController: UICollectionViewDelegateFlowLayout {
         if paymentMethodsUi.isSavedPaymentMethods(indexPath.section) {
             return CGSize(width: paymentMethodsCollectionView.frame.size.width - .point32, height: .point56)
         } else if !paymentMethodUi.isManualPaymentMethod() {
-            return calculatePayOnlineCellSize(indexPath)
+            return calculatePayOnlineCellSize(indexPath, collectionViewLayout)
         } else {
             return CGSize(width: paymentMethodsCollectionView.frame.size.width - .point32, height: .point56)
         }
     }
     
-    private func calculatePayOnlineCellSize(_ indexPath: IndexPath) -> CGSize {
+    private func calculatePayOnlineCellSize(_ indexPath: IndexPath,
+                                            _ collectionViewLayout: UICollectionViewLayout) -> CGSize {
         let paymentMethodUi = paymentMethodsUi.getPaymentMethodUi(indexPath.section, row: indexPath.row)
         
         if paymentMethodUi.isFullWidth() {
-            return CGSize(width: paymentMethodsCollectionView.frame.size.width - .point32, height: 84)
+            return CGSize(width: paymentMethodsCollectionView.frame.size.width - .point32, height: .point84)
         } else {
-            let collectionViewWidth = paymentMethodsCollectionView.frame.size.width - (.point16 * .point2 + .point10)
-            return CGSize(width: collectionViewWidth / 2, height: 84)
+            let collectionViewWidth = paymentMethodsCollectionView.frame.size.width - (.point42)
+            return CGSize(width: collectionViewWidth / CGFloat.point2, height: .point84)
         }
     }
     
@@ -99,5 +103,9 @@ extension CheckoutPaymentViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         CGSize(width: collectionView.frame.width, height: .point20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: .point16, left: .point16, bottom: .point16, right: .point16)
     }
 }
