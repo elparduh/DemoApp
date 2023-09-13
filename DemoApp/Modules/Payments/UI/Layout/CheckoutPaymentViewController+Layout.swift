@@ -8,7 +8,7 @@ extension CheckoutPaymentViewController: ViewBuildable {
         view.addSubview(buttonContainerView)
         buttonContainerView.addSubview(nextButton)
         scrollView.addSubview(mainStackView)
-        mainStackView.addArrangedSubviews([paymentMethodsCollectionView])
+        mainStackView.addArrangedSubview(paymentMethodsCollectionView)
     }
     
     func addConstraints(toMainView view: UIView) {
@@ -16,7 +16,7 @@ extension CheckoutPaymentViewController: ViewBuildable {
         configureMainView()
         configureScrollView(layoutGuide)
         configureMainStackView()
-        configureManualCollectionView()
+        configurePaymentMethodsCollectionView()
         configureButtonContainerView(layoutGuide)
         configureContinueButton()
     }
@@ -33,12 +33,11 @@ extension CheckoutPaymentViewController: ViewBuildable {
     private func configureMainStackView() {
         mainStackView.pinToEdges(superView: scrollView)
         mainStackView.axis = .vertical
-        mainStackView.spacing = .point16
         
         mainStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).activate()
     }
     
-    private func configureManualCollectionView() {
+    private func configurePaymentMethodsCollectionView() {
         paymentMethodsCollectionView.showsVerticalScrollIndicator = false
         paymentMethodsCollectionView.isScrollEnabled = false
         paymentMethodsCollectionView.delegate = self
