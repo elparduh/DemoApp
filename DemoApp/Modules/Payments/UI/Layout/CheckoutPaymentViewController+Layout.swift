@@ -38,15 +38,18 @@ extension CheckoutPaymentViewController: ViewBuildable {
     }
     
     private func configurePaymentMethodsCollectionView() {
+        paymentMethodsCollectionView.collectionViewLayout = CheckoutPaymentFlowLayout(spacing: .point8)
         paymentMethodsCollectionView.showsVerticalScrollIndicator = false
         paymentMethodsCollectionView.isScrollEnabled = false
         paymentMethodsCollectionView.delegate = self
         paymentMethodsCollectionView.dataSource = self
-        paymentMethodsCollectionView.configureLayoutMargins(top: .point8, left: .point16, bottom: .point16, right: .point16)
-        paymentMethodsCollectionView.layout?.minimumLineSpacing = .point16
         paymentMethodsCollectionView.registerSupplementary(HeaderCollectionReusableView.self)
         paymentMethodsCollectionView.register(PaymentViewCell.self)
         paymentMethodsCollectionView.register(PaymentGatewayViewCell.self)
+        paymentMethodsCollectionView.contentInset = UIEdgeInsets(top: .zero,
+                                                                 left: .zero,
+                                                                 bottom: .point76,
+                                                                 right: .zero)
     }
     
     private func configureButtonContainerView(_ layoutGuide: UILayoutGuide) {
@@ -99,5 +102,9 @@ extension CheckoutPaymentViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         CGSize(width: collectionView.frame.width, height: .point20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: .point16, left: .point16, bottom: .point16, right: .point16)
     }
 }

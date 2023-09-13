@@ -18,7 +18,7 @@ extension Array where Element == Edges {
     
     func asSavedPaymentMethodsUi() -> PaymentMethodsUi {
         let paymentMethodUi: [PaymentMethodUi] = self.compactMap { edges in
-            PaymentMethodUi(savedPaymentMethod: SavedPaymentMethodUi(title: "\(edges.node?.lastDigits ?? .empty) \(edges.node?.brand ?? .empty)",
+            PaymentMethodUi(savedPaymentMethod: SavedPaymentMethodUi(title: "\(edges.node?.lastDigits ?? .empty) - \(edges.node?.brand ?? .empty)",
                                                                      image: edges.node?.iconUrl ?? .empty,
                                                                      isDefault: edges.node?.isDefault ?? false))
         }
