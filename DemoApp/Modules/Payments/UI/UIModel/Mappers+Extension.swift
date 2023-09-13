@@ -98,3 +98,18 @@ extension PaymentMethodUi {
         gatewayPaymentMethod.fullWidth
     }
 }
+
+extension GatewayPaymentMethodUi {
+    
+    func isNotSelectedGatewayPayment() -> Bool {
+        isAdyen() || isVoucher()
+    }
+    
+    func isAdyen() -> Bool {
+        gatewayTypeUi == .adyen
+    }
+    
+    func isVoucher() -> Bool {
+        gatewayTypeUi == .vouchers
+    }
+}

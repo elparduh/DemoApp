@@ -4,10 +4,6 @@ class CheckoutPaymentViewController: UIViewController {
     
     let scrollView = UIScrollView()
     let mainStackView = UIStackView()
-    /*let savedCollectionView = UICollectionViewWithDynamicHeight(frame: .zero,
-                                                                collectionViewLayout: UICollectionViewFlowLayout())
-    let onlineCollectionView = UICollectionViewWithDynamicHeight(frame: .zero,
-                                                                 collectionViewLayout: UICollectionViewFlowLayout())*/
     let paymentMethodsCollectionView = UICollectionViewWithDynamicHeight(frame: .zero,
                                                                  collectionViewLayout: UICollectionViewFlowLayout())
     let buttonContainerView = UIView()
@@ -89,7 +85,12 @@ extension CheckoutPaymentViewController: UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.paymentMethodSelected()
+        let paymentMethodUi = paymentMethodsUi.getPaymentMethodUi(indexPath.section, row: indexPath.row)
+        if paymentMethodUi.gatewayPaymentMethod.isNotSelectedGatewayPayment() {
+            collectionView.deselectItem(at: indexPath, animated: false)
+        } else {
+            presenter.paymentMethodSelected()
+        }
     }
 }
 

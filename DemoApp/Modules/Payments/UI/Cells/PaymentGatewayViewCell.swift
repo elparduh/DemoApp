@@ -79,7 +79,7 @@ extension PaymentGatewayViewCell: CustomViewBuildable {
         mainStackView.alignment = .center
         mainStackView.configureLayoutMargins(constant: .point16)
         mainStackView.backgroundColor = .white
-        shadowView.layer.cornerRadius = .point8
+        mainStackView.layer.cornerRadius = .point8
     }
     
     private func configureImageStackView() {
